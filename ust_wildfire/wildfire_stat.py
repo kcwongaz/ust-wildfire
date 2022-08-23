@@ -2,6 +2,17 @@ import numpy as np
 import pandas as pd
 
 
+def filter_year(df, year_min, year_max):
+    """
+    Filter out data not in the desired range
+    """
+
+    df = df.loc[(df["year"] >= year_min) &
+                (df["year"] <= year_max)]
+
+    return df
+
+
 def filter_repeat2013(df):
     """
     Reproduce the selection of wildfires analyzed by Prof. Li's 2013 paper.
@@ -66,7 +77,8 @@ def wildfire_stat_yearly(df, years):
         else:
             area[i] = np.average(df_y["size"])
 
-    return count, area
+    df = pd.DataFrame({"year": years, "count": count, "avg_size": area})
+    return df
 
 
 def wildfire_stat_monthly(df, months, no_cross_month):
@@ -91,4 +103,6 @@ def wildfire_stat_monthly(df, months, no_cross_month):
         else:
             area[i] = np.average(df_sub["size"])
 
-    return count, area
+    df = pd.DataFrame({"month": months, "count": count, "avg_size": area})
+    return df
+
