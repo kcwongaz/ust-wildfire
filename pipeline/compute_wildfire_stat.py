@@ -22,12 +22,18 @@ repeat2013 = False
 no_cross_month = False
 
 
+# Filter events that have no valid start- and end- time
+no_invalid_time = True
+
 # --------------------------------------------------------------------------- #
 df = pd.read_csv(fname)
 df = filter_year(df, year_min, year_max)
 
 if repeat2013:
     df = filter_repeat2013(df)
+
+if no_invalid_time:
+    df = filter_valid_time(df, start=True, end=True)
 
 
 yr_stat = wildfire_stat_yearly(df, years)

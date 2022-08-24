@@ -13,6 +13,20 @@ def filter_year(df, year_min, year_max):
     return df
 
 
+def filter_valid_time(df, start=True, end=True):
+    """
+    Filter out data with no valid start and/or end time
+    """
+
+    if start:
+        df = df.dropna(subset=["start_time"])
+
+    if end:
+        df = df.dropna(subset=["end_time"])
+
+    return df
+
+
 def filter_repeat2013(df):
     """
     Reproduce the selection of wildfires analyzed by Prof. Li's 2013 paper.
