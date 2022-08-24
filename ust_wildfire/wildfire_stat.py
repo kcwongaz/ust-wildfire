@@ -58,19 +58,15 @@ def filter_cross_month(df):
     return df
 
 
-def wildfire_stat_yearly(df, years):    
+def wildfire_stat_yearly(df, years):
     
-    # Get the counts
-    count_series = df["year"].value_counts()
-    count_series = count_series.sort_index()
-    count = count_series.to_numpy()
-
-    # Get average burn size
     area = np.zeros(len(years))
+    count = np.zeros(len(years))
 
     for i, y in enumerate(years):
         df_y = df.loc[df["year"] == y]
         df_y = df_y.dropna(subset=["size"])
+        count[i] = len(df_y)
 
         if len(df_y) == 0:
             area[i] = np.nan
@@ -86,22 +82,18 @@ def wildfire_stat_monthly(df, months, no_cross_month):
     if no_cross_month:
         df = filter_cross_month(df)
 
-    # Get the counts
-    count_series = df["month"].value_counts()
-    count_series = count_series.sort_index()
-    count = count_series.to_numpy()
-
-    # Get average burn size
     area = np.zeros(len(months))
+    count = np.zeros(len(months))
 
     for i, m in enumerate(months):
-        df_sub = df.loc[df["month"] == m]
-        df_sub = df_sub.dropna(subset=["size"])
+        df_m = df.loc[df["month"] == m]
+        df_m = df_m.dropna(subset=["size"])
+        count[i] = len(df_m)
 
-        if len(df_sub) == 0:
+        if len(df_m) == 0:
             area[i] = np.nan
         else:
-            area[i] = np.average(df_sub["size"])
+            area[i] = np.average(df_m["size"])
 
     df = pd.DataFrame({"month": months, "count": count, "avg_size": area})
     return df

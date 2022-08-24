@@ -165,10 +165,10 @@ def add_year_month(df):
 
 
 # ---------------------------------------------------------------------------- #
-frames = [read_alberta1961("../raw/alberta_1961_1982.csv"),
-          read_alberta1983("../raw/alberta_1983_1995.csv"),
-          read_alberta1996("../raw/alberta_1996_2005.csv"),
-          read_alberta2006("../raw/alberta_2006_2018.csv")]
+frames = [read_alberta1961("../data/raw/alberta_1961_1982.csv"),
+          read_alberta1983("../data/raw/alberta_1983_1995.csv"),
+          read_alberta1996("../data/raw/alberta_1996_2005.csv"),
+          read_alberta2006("../data/raw/alberta_2006_2018.csv")]
 
 dataframe = pd.concat(frames)
 dataframe = add_year_month(dataframe)

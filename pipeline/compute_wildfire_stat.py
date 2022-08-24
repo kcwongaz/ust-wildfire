@@ -6,7 +6,7 @@ import sys
 
 
 label = sys.argv[1]
-fname = "../data/{label}.csv"
+fname = f"../data/{label}.csv"
 
 year_min = 1950
 year_max = 2021
@@ -34,4 +34,4 @@ yr_stat = wildfire_stat_yearly(df, years)
 mo_stat = wildfire_stat_monthly(df, months, no_cross_month)
 
 yr_stat.to_csv(f"../data/results/{label}_yearly_stat.csv", index=False)
-yr_stat.to_csv(f"../data/results/{label}_monthly_stat.csv", index=False)
+mo_stat.to_csv(f"../data/results/{label}_monthly_stat.csv", index=False)
