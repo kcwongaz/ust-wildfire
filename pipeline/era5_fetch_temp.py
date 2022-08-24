@@ -13,6 +13,7 @@ ncdir = f"../data/era5_{label}"
 yr_start = 1950
 yr_end = 2020
 
+
 # --------------------------------------------------------------------------- #
 # Calculate:
 # (1) Temperature at start time,
@@ -64,6 +65,7 @@ for yr in range(yr_start, yr_end+1):
         temp_st[i] = start_value(row, t2m1, lat, lon, time1)
         temp_1d[i] = first_nday_avg(row, t2m1, lat, lon, time1, n=1)
 
+        # Special care is needed if the fire crosses years
         if not check_cross_year(row["start_time"], row["end_time"]):
             temp_10d[i] = first_nday_avg(row, t2m1, lat, lon, time1, n=10)
             temp_lt[i] = lifetime_avg(row, t2m1, lat, lon, time1)

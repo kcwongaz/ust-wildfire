@@ -105,4 +105,3 @@ def wildfire_stat_monthly(df, months, no_cross_month):
 
     df = pd.DataFrame({"month": months, "count": count, "avg_size": area})
     return df
-
