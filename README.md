@@ -13,7 +13,7 @@ If you just want to see the data analysis results, you can find them in the [not
 
 # Getting Started
 
-## 1 - Data
+### 1 - Data
 The dataset can be downloaded [here](https://drive.google.com/file/d/10Ff7UBt1Fg68EvGE-uMLrt5f4aQGI6RW/view?usp=sharing).
 
 The dataset contains two .csv files holding the wildfire data in California, US and Alberta, Canada. Each row contains the location (lat, lon) of the fire, total burn area in ha, the start- and end-time of the fire in Unix timestamp, and four temperature measures of the wildfire (see the notebooks for definitions). There are also two .csv files containing the monthly average temperature in the two locations.
@@ -26,7 +26,7 @@ The raw data were obtained from:
 
 <br>
 
-## 2 - Setting up
+### 2 - Setting up
 
 I suggest installing the code locally, e.g.
 
@@ -53,8 +53,8 @@ You may need to rename your raw data files to have the names `start.sh` looks fo
 
 <br>
 
-## 3 - Dealing with ERA5
+### 3 - Dealing with ERA5
 
 ERA5 climate data needed to be accessed through the CDS API, see the [official documentation](https://cds.climate.copernicus.eu/api-how-to) for how to set up an account. After you have an account, you can use the [`cdsapi`](https://pypi.org/project/cdsapi/) Python package to make your request.
 
-`pipline/download_era5` has some example scripts for requesting data through the CDS API. Historical climate datasets are large; typically you may want to work with them on a computing server. The script `pipeline/slrum_download_era5.sh` is an example script of how to do that in a SLRUM system, which is used by HKUST's HPC3.
+`pipline/download_era5/` has some example scripts for requesting data through the CDS API. Historical climate datasets are large; typically you may want to work with them on a computing server. The script `pipeline/slrum_download_era5.sh` is an example script of how to do that in a SLRUM system, which is used by HKUST's HPC3.
