@@ -10,6 +10,9 @@ echo "Start..."
 
 # Step 1
 # Read the wildfire data out from the raw format
+# The raw data should be placed in data/raw/, and are assumed to have names
+# california_1950.geojson
+# alberta_1961_1982.csv, alberta_1983_1995.csv, alberta_1996_2005.csv, alberta_2006_2018.csv
 echo "Step 1: Reading wildfire raw data..."
 python3 read_california.py
 python3 read_alberta.py
