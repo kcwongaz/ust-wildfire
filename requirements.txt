@@ -1,0 +1,6 @@
+cdsapi==0.5.1
+netCDF4==1.6.0
+numpy==1.23.2
+pandas==1.4.3
+scipy==1.9.0
+setuptools==45.2.0
